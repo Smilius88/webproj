@@ -40,20 +40,4 @@ public class StringResource {
         + "<body><h1>" + wisdom + "</body></h1>" + "</html> ";
 	}
 
-	@POST
-	@Consumes(MediaType.TEXT_PLAIN)
-	@Produces(MediaType.TEXT_PLAIN)
-	public String concatStringfromText(String string1, String string2) {
-		
-		String message;
-		String sb = new StringBuilder(string1).append(string2).toString();
-		
-		if(! sb.isEmpty()){
-			message = sb.toString();
-		} else {
-			message = wisdom;
-		}
-	    return "<html> " + "<title>" + "Two Strings Made One" + "</title>"
-        + "<body><h1>" + message + "</body></h1>" + "</html> ";
-	}
 }
