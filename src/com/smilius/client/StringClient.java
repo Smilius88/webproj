@@ -34,7 +34,7 @@ public class StringClient {
 		Client client = ClientBuilder.newClient();
 		
 		WebTarget target = client.target(address).path("string").path("concatenate")
-				.queryParam("string1", string2).queryParam("string2", string2);
+				.queryParam("string1", string1).queryParam("string2", string2);
 		
 		Response response = target.request(MediaType.TEXT_PLAIN).get();
 		if (response.getStatus() != 200) {
