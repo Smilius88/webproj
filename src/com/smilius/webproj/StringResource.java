@@ -6,7 +6,9 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Path("/string/concatenate")
 public class StringResource {
@@ -40,4 +42,22 @@ public class StringResource {
         + "<body><h1>" + wisdom + "</body></h1>" + "</html> ";
 	}
 
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	public Response concatStringfromClient(
+			@QueryParam("string1") String string1, 
+			@QueryParam("string2") String string2) {
+		
+		String message;
+		String sb = new StringBuilder(string1).append(string2).toString();
+		
+		if(! sb.isEmpty()){
+			message = sb.toString();
+		} else {
+			message = wisdom;
+		}
+	    return Response
+	    		.status(200)
+	    		.entity(message).build();
+	}
 }
